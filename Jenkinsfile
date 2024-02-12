@@ -8,6 +8,7 @@ pipeline {
   stages {
     stage('Checkout sources') {
       echo "hello"
+      ./build.sh
     }
   }
 }
