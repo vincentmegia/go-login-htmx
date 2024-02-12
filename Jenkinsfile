@@ -1,6 +1,6 @@
 pipeline {
   checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/vincentmegia/go-login-htmx.git']])
-  agent {
+  node {
     docker {
       image 'jenkins/jenkins:lts'
     }
