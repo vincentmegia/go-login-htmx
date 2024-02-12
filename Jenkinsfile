@@ -5,6 +5,11 @@ pipeline {
     }
   }
   stages {
+    stage('Checkout sources') {
+      node {
+        checkout scm
+      }
+    }
     stage('Build') {
       steps {
         ./build.sh
