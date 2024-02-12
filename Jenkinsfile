@@ -10,10 +10,5 @@ pipeline {
         checkout scm
       }
     }
-    stage('Build') {
-      steps {
-        ./build.sh
-      }
-    }
   }
 }
