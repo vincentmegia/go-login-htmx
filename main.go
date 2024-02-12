@@ -1,12 +1,25 @@
 package main
 
 import (
-	"github.com/labstack/echo/v4"
-	"github.com/vincentmegia/go-login-htmx/handlers"
+	"context"
+	"fmt"
+	"net/http"
+	"os"
+
+	"github.com/a-h/templ"
+)
+
+var (
+	version string
+	date    string
 )
 
 func main() {
-	app := echo.New()
-	app.GET("/", handlers.Handle)
-	app.Logger.Fatal(app.Start(":8080"))
+	component := html()
+	component.Render(context.Background(), os.Stdout)
+
+	http.Handle("/", templ.Handler(component))
+
+	fmt.Println("Listening on :3000")
+	http.ListenAndServe(":3000", nil)
 }
