@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Package') {
       steps {
-        sh '''docker run \
+        sh '''-v $(which docker):/usr/bin/docker run \
                 --user root \
                 --volumes-from "${BUILD_TAG}" \
                 buildpacksio/pack:latest build "test-imag"
